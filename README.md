@@ -57,7 +57,7 @@ I carried out exploratory data analysis to identify potential issues , understan
 Built interactive dashboards in Power BI to visualize key metrics and trends
 
 ## Key SQL Queries
-### Top-Selling Products By Revenue
+```### Top-Selling Products By Revenue
 SELECT p.product_name, SUM(p.unit_price*o.quantity) AS revenue
 
 FROM Products p
@@ -65,10 +65,10 @@ FROM Products p
 INNER JOIN Orders o ON o.product_id = p.product_id 
 
 GROUP BY product_name
-
+									
 ORDER BY revenue DESC;
 
-### In Which Year did the Company generate the highest revenue
+```### In Which Year did the Company generate the highest revenue
 SELECT 
 		EXTRACT(YEAR FROM o.order_date) AS Yr,
 		SUM((p.unit_price-p.unit_cost)*o.quantity) AS profit
