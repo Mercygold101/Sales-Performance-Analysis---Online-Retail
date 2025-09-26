@@ -1,3 +1,4 @@
+# SQL Project
 # Sales-Performance-Dashboard---Ecommerce
 ## Overview
 This repository features a Power BI dashboard and SQL queries designed to analyze sales and product data, empowering grocery ecommerce businesses to gain transaction-level insights and drive business growth.
@@ -56,7 +57,7 @@ I carried out exploratory data analysis to identify potential issues , understan
 ### 3 Visualization in Power BI
 Built interactive dashboards in Power BI to visualize key metrics and trends
 
-## Key SQL Queries
+```## Key SQL Queries
 ### Top-Selling Products By Revenue
 SELECT p.product_name, SUM(p.unit_price*o.quantity) AS revenue
 
@@ -68,7 +69,7 @@ GROUP BY product_name
 
 ORDER BY revenue DESC;
 
-### In Which Year did the Company generate the highest revenue
+```### In Which Year did the Company generate the highest revenue
 SELECT 
 		EXTRACT(YEAR FROM o.order_date) AS Yr,
 		SUM((p.unit_price-p.unit_cost)*o.quantity) AS profit
@@ -81,7 +82,7 @@ GROUP BY Yr
 
 ORDER BY profit DESC;
 
-### Is it true that 25% of our revenue is generated from juices?
+```### Is it true that 25% of our revenue is generated from juices?
 SELECT 
 	ROUND(100.0 * SUM(CASE WHEN p.product_name ILIKE '%juice%' THEN p.unit_price*o.quantity ELSE 0 END)
 	/SUM(p.unit_price*quantity),0) 
