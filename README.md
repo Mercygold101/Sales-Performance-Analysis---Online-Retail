@@ -58,6 +58,7 @@ Built interactive dashboards in Power BI to visualize key metrics and trends
 
 ## Key SQL Queries
 ### Top-Selling Products By Revenue
+```sql
 SELECT p.product_name, SUM(p.unit_price*o.quantity) AS revenue
 
 FROM Products p
@@ -69,6 +70,7 @@ GROUP BY product_name
 ORDER BY revenue DESC;
 
 ### In Which Year did the Company generate the highest revenue
+```sql
 SELECT 
 		EXTRACT(YEAR FROM o.order_date) AS Yr,
 		SUM((p.unit_price-p.unit_cost)*o.quantity) AS profit
@@ -82,6 +84,7 @@ GROUP BY Yr
 ORDER BY profit DESC;
 
 ### Is it true that 25% of our revenue is generated from juices?
+```sql
 SELECT 
 	ROUND(100.0 * SUM(CASE WHEN p.product_name ILIKE '%juice%' THEN p.unit_price*o.quantity ELSE 0 END)
 	/SUM(p.unit_price*quantity),0) 
